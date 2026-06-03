@@ -168,28 +168,11 @@ Le repo inclut **deux interfaces interactives** pour explorer les resultats :
 
 ### 1. Dashboard statique HTML (GitHub Pages)
 
-Heberge gratuitement sur GitHub Pages : Settings -> Pages -> Source : `main` / `/docs`.
-Une fois active, accessible a :
-```
-https://<your-username>.github.io/em-trading-engine
-```
-
-5 onglets : Vue d'ensemble, Series temporelles (avec slider et regime overlay), Comparaison de modeles (bar chart + radar), Predictions vs realise (multi-modeles), Analyse par regime (heatmap des gains).
-
-Tout en vanilla HTML + Plotly.js, aucun backend, aucun build step.
+https://redgainz.github.io/em-trading-engine/
 
 ### 2. App Streamlit multi-pages
 
-Pour une interactivite plus poussee (calcul live de spectres a partir des donnees) :
-
-```bash
-pip install streamlit numpy pandas matplotlib
-streamlit run app/streamlit_app.py
-```
-
-6 pages incluant un **explorateur de spectres en temps reel** (selection date par slider, recalcul MP fit a la volee) et un **explorateur de la statistique GUE**.
-
-Deployable gratuitement sur [Streamlit Community Cloud](https://share.streamlit.io/) en 2 minutes.
+https://em-trading-engine.streamlit.app/
 
 ---
 
