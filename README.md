@@ -41,7 +41,7 @@
 
 | Ressource | Lien |
 |---|---|
-| **Dashboard interactif live** | [https://your-username.github.io/em-trading-engine](https://your-username.github.io/em-trading-engine) |
+| **Dashboard interactif live** | https://redgainz.github.io/em-trading-engine/ |
 | **App Streamlit** | [`app/streamlit_app.py`](app/streamlit_app.py) — `streamlit run app/streamlit_app.py` |
 | **Paper RMT-Zeta (PDF)** | [`paper-rmt-zeta/Reda_Mikou_Paper_RMT_Zeta.pdf`](paper-rmt-zeta/Reda_Mikou_Paper_RMT_Zeta.pdf) |
 | **Memoire principal (PDF)** | *Sera ajoute apres soutenance — voir [Note de l'auteur](#note-de-lauteur)* |
