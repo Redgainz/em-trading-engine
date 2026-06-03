@@ -16,7 +16,7 @@
 **Reda Mikou &middot; Promotion 2025-2026**
 
 [ Live Dashboard ](https://redgainz.github.io/em-trading-engine/) &middot;
-[ Streamlit App ](app/streamlit_app.py)
+[ Streamlit App ](https://em-trading-engine.streamlit.app/)
 
 </div>
 
