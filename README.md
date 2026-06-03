@@ -12,7 +12,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![CI](https://img.shields.io/badge/CI-GitHub%20Actions-blue.svg)](.github/workflows/lint-and-test.yml)
 
-**Reda Mikou &middot**
+**Reda Mikou**
 
 [ Live Dashboard ](https://redgainz.github.io/em-trading-engine/) &middot;
 [ Streamlit App ](https://em-trading-engine.streamlit.app/)
