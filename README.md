@@ -12,8 +12,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![CI](https://img.shields.io/badge/CI-GitHub%20Actions-blue.svg)](.github/workflows/lint-and-test.yml)
 
-**EDHEC Business School &middot; MSc Data Analytics and Artificial Intelligence**
-**Reda Mikou &middot; Promotion 2025-2026**
+**Reda Mikou &middot**
 
 [ Live Dashboard ](https://redgainz.github.io/em-trading-engine/) &middot;
 [ Streamlit App ](https://em-trading-engine.streamlit.app/)
