@@ -1,0 +1,19 @@
+Date pivot : 2019-01-04
+Vol future realisee : 72.41%
+Vol passee : 14.30%
+Prediction naive RMT : 6.34%
+
+=== Features ===
+  lambda_max               : 38.419750
+  lambda_2                 : 6.361503
+  lambda_3                 : 2.576885
+  var_market               : 0.640329
+  sigma2_noise             : 0.129321
+  n_factors                : 10.000000
+  TW_z                     : 3131.170404
+  TW_p                     : 0.005000
+  participation_ratio      : 0.901809
+  IPR_v1                   : 0.018481
+  D_KS_GUE                 : 0.191698
+  D_KS_Poisson             : 0.165605
+  zeta_score               : -0.146317

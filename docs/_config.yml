@@ -1,0 +1,3 @@
+# GitHub Pages config — minimal (no Jekyll processing needed for pure HTML)
+include: ["index.html"]
+theme: null

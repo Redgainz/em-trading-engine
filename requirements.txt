@@ -1,0 +1,10 @@
+# === Core (paper-rmt-zeta tourne sur ces 3 seulement) ===
+numpy>=2.0
+pandas>=2.0
+matplotlib>=3.8
+
+# === Streamlit app (optionnel) ===
+streamlit>=1.30
+
+# === Optionnel : pour fetch_data.py (donnees Yahoo Finance) ===
+# yfinance>=0.2

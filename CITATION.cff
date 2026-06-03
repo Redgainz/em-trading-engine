@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use this code or paper, please cite it as below."
+title: "EM Trading Engine: Hybrid Econometric-AI for Market-Making and Hedging on Emerging Markets"
+authors:
+  - family-names: "Mikou"
+    given-names: "Reda"
+    email: "redamedmikou@gmail.com"
+    affiliation: "EDHEC Business School - MSc DAAI"
+date-released: 2026-05-27
+version: "1.0.0"
+license: MIT
+repository-code: "https://github.com/<your-username>/em-trading-engine"
+abstract: >-
+  Hybrid econometric-AI engine for market-making and cross-product hedging
+  on emerging-markets currencies (BRL/ZAR/TRY).
+  Includes a companion paper exploring the connection between Random Matrix
+  Theory and the Riemann zeta function (Montgomery-Odlyzko universality) for
+  multi-asset volatility prediction.
+keywords:
+  - quantitative-finance
+  - deep-learning
+  - random-matrix-theory
+  - riemann-zeta-function
+  - emerging-markets
+  - volatility-forecasting
+  - market-making
+  - deep-hedging
+preferred-citation:
+  type: thesis
+  title: "Apprentissage Profond Robuste au Tail Risk: Une approche hybride economerique-IA pour le market-making et le hedging cross-produit sur les marches emergents"
+  authors:
+    - family-names: "Mikou"
+      given-names: "Reda"
+  institution:
+    name: "EDHEC Business School"
+  thesis-type: "Master's thesis"
+  year: 2026
