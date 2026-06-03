@@ -15,8 +15,7 @@
 **EDHEC Business School &middot; MSc Data Analytics and Artificial Intelligence**
 **Reda Mikou &middot; Promotion 2025-2026**
 
-[ Live Dashboard ](https://your-username.github.io/em-trading-engine) &middot;
-[ Paper PDF ](paper-rmt-zeta/Reda_Mikou_Paper_RMT_Zeta.pdf) &middot;
+[ Live Dashboard ](https://redgainz.github.io/em-trading-engine/) &middot;
 [ Streamlit App ](app/streamlit_app.py)
 
 </div>
@@ -237,58 +236,6 @@ em-trading-engine/
     └── fx_real_2010_2026_ohlc.csv  ← OHLC pour Parkinson RV
 ```
 
----
-
-## Reproductibilite
-
-### Installation
-
-```bash
-git clone https://github.com/<your-username>/em-trading-engine.git
-cd em-trading-engine
-pip install -r requirements.txt
-```
-
-### Reproduire le paper RMT-Zeta (15 secondes total)
-
-```bash
-cd paper-rmt-zeta/code
-python 01_build_data.py          # ~1s : 60 series x 4000 jours
-python 02_simple_example.py      # ~1s : fenetre pivot
-python 03_backtest_features.py   # ~1s : 772 fenetres rolling
-python 04_ml_compare.py          # ~7s : 6 modeles ML
-python 05_figures_all.py         # ~3s : 10 figures
-```
-
-### Regenerer les figures du memoire
-
-```bash
-cd thesis/code
-python build_real_data.py        # Reconstruit les CSVs
-python generate_figures.py       # Genere les 25 figures
-```
-
-### Lancer le dashboard ou l'app
-
-```bash
-# Dashboard HTML (statique, ouvre dans le navigateur)
-cd docs && python3 -m http.server 8000
-# puis http://localhost:8000
-
-# App Streamlit (interactive)
-streamlit run app/streamlit_app.py
-# puis http://localhost:8501
-```
-
----
-
-## Stack technique
-
-### Implementation
-- **Python 3.10+** : numpy 2.2, pandas 2.3, matplotlib 3.10, streamlit 1.30
-- **Aucune dependance** scipy / sklearn / xgboost pour le paper RMT-Zeta : tous les modeles ML sont implementes from scratch en ~600 lignes
-- **LaTeX** : pdflatex avec packages standards (amsmath, booktabs, natbib, cleveref, fancyhdr, hyperref)
-- **Frontend dashboard** : vanilla HTML + CSS + Plotly.js (CDN)
 
 ### Algorithmes implementes en numpy pur
 
@@ -308,31 +255,11 @@ streamlit run app/streamlit_app.py
 
 ---
 
-## Citation
-
-Voir [`CITATION.cff`](CITATION.cff) pour le format GitHub standard, ou BibTeX :
-
-```bibtex
-@misc{mikou2026emengine,
-  author  = {Reda Mikou},
-  title   = {EM Trading Engine: Hybrid Econometric-AI for Market-Making and Hedging on Emerging Markets},
-  year    = {2026},
-  url     = {https://github.com/<your-username>/em-trading-engine},
-}
-```
-
----
 
 ## Auteur
 
 **Reda Mikou**
-MSc DAAI &middot; EDHEC Business School &middot; Promotion 2025-2026
 
-- Email : redamedmikou@gmail.com
-- LinkedIn : *a completer*
-- GitHub : *a completer*
-
----
 
 ## Licence
 
