@@ -12,12 +12,10 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![CI](https://img.shields.io/badge/CI-GitHub%20Actions-blue.svg)](.github/workflows/lint-and-test.yml)
 
-**EDHEC Business School &middot; MSc Data Analytics and Artificial Intelligence**
-**Reda Mikou &middot; Promotion 2025-2026**
+**Reda Mikou**
 
-[ Live Dashboard ](https://your-username.github.io/em-trading-engine) &middot;
-[ Paper PDF ](paper-rmt-zeta/Reda_Mikou_Paper_RMT_Zeta.pdf) &middot;
-[ Streamlit App ](app/streamlit_app.py)
+[ Live Dashboard ](https://redgainz.github.io/em-trading-engine/) &middot;
+[ Streamlit App ](https://em-trading-engine.streamlit.app/)
 
 </div>
 
@@ -43,8 +41,8 @@
 
 | Ressource | Lien |
 |---|---|
-| **Dashboard interactif live** | [https://your-username.github.io/em-trading-engine](https://your-username.github.io/em-trading-engine) |
-| **App Streamlit** | [`app/streamlit_app.py`](app/streamlit_app.py) — `streamlit run app/streamlit_app.py` |
+| **Dashboard interactif live** | https://redgainz.github.io/em-trading-engine/ |
+| **App Streamlit** | https://em-trading-engine.streamlit.app/
 | **Paper RMT-Zeta (PDF)** | [`paper-rmt-zeta/Reda_Mikou_Paper_RMT_Zeta.pdf`](paper-rmt-zeta/Reda_Mikou_Paper_RMT_Zeta.pdf) |
 | **Memoire principal (PDF)** | *Sera ajoute apres soutenance — voir [Note de l'auteur](#note-de-lauteur)* |
 | **Code memoire** | [`thesis/code/`](thesis/code/) |
@@ -169,28 +167,11 @@ Le repo inclut **deux interfaces interactives** pour explorer les resultats :
 
 ### 1. Dashboard statique HTML (GitHub Pages)
 
-Heberge gratuitement sur GitHub Pages : Settings -> Pages -> Source : `main` / `/docs`.
-Une fois active, accessible a :
-```
-https://<your-username>.github.io/em-trading-engine
-```
-
-5 onglets : Vue d'ensemble, Series temporelles (avec slider et regime overlay), Comparaison de modeles (bar chart + radar), Predictions vs realise (multi-modeles), Analyse par regime (heatmap des gains).
-
-Tout en vanilla HTML + Plotly.js, aucun backend, aucun build step.
+https://redgainz.github.io/em-trading-engine/
 
 ### 2. App Streamlit multi-pages
 
-Pour une interactivite plus poussee (calcul live de spectres a partir des donnees) :
-
-```bash
-pip install streamlit numpy pandas matplotlib
-streamlit run app/streamlit_app.py
-```
-
-6 pages incluant un **explorateur de spectres en temps reel** (selection date par slider, recalcul MP fit a la volee) et un **explorateur de la statistique GUE**.
-
-Deployable gratuitement sur [Streamlit Community Cloud](https://share.streamlit.io/) en 2 minutes.
+https://em-trading-engine.streamlit.app/
 
 ---
 
@@ -237,58 +218,6 @@ em-trading-engine/
     └── fx_real_2010_2026_ohlc.csv  ← OHLC pour Parkinson RV
 ```
 
----
-
-## Reproductibilite
-
-### Installation
-
-```bash
-git clone https://github.com/<your-username>/em-trading-engine.git
-cd em-trading-engine
-pip install -r requirements.txt
-```
-
-### Reproduire le paper RMT-Zeta (15 secondes total)
-
-```bash
-cd paper-rmt-zeta/code
-python 01_build_data.py          # ~1s : 60 series x 4000 jours
-python 02_simple_example.py      # ~1s : fenetre pivot
-python 03_backtest_features.py   # ~1s : 772 fenetres rolling
-python 04_ml_compare.py          # ~7s : 6 modeles ML
-python 05_figures_all.py         # ~3s : 10 figures
-```
-
-### Regenerer les figures du memoire
-
-```bash
-cd thesis/code
-python build_real_data.py        # Reconstruit les CSVs
-python generate_figures.py       # Genere les 25 figures
-```
-
-### Lancer le dashboard ou l'app
-
-```bash
-# Dashboard HTML (statique, ouvre dans le navigateur)
-cd docs && python3 -m http.server 8000
-# puis http://localhost:8000
-
-# App Streamlit (interactive)
-streamlit run app/streamlit_app.py
-# puis http://localhost:8501
-```
-
----
-
-## Stack technique
-
-### Implementation
-- **Python 3.10+** : numpy 2.2, pandas 2.3, matplotlib 3.10, streamlit 1.30
-- **Aucune dependance** scipy / sklearn / xgboost pour le paper RMT-Zeta : tous les modeles ML sont implementes from scratch en ~600 lignes
-- **LaTeX** : pdflatex avec packages standards (amsmath, booktabs, natbib, cleveref, fancyhdr, hyperref)
-- **Frontend dashboard** : vanilla HTML + CSS + Plotly.js (CDN)
 
 ### Algorithmes implementes en numpy pur
 
@@ -308,31 +237,11 @@ streamlit run app/streamlit_app.py
 
 ---
 
-## Citation
-
-Voir [`CITATION.cff`](CITATION.cff) pour le format GitHub standard, ou BibTeX :
-
-```bibtex
-@misc{mikou2026emengine,
-  author  = {Reda Mikou},
-  title   = {EM Trading Engine: Hybrid Econometric-AI for Market-Making and Hedging on Emerging Markets},
-  year    = {2026},
-  url     = {https://github.com/<your-username>/em-trading-engine},
-}
-```
-
----
 
 ## Auteur
 
 **Reda Mikou**
-MSc DAAI &middot; EDHEC Business School &middot; Promotion 2025-2026
 
-- Email : redamedmikou@gmail.com
-- LinkedIn : *a completer*
-- GitHub : *a completer*
-
----
 
 ## Licence
 
