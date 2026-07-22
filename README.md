@@ -56,7 +56,7 @@ Ce depot regroupe **deux travaux de recherche** menes dans le cadre du MSc DAAI 
 
 | Travail | Description | Statut | Code public |
 |---|---|---|---|
-| **Memoire principal** | Construction d'un moteur de trading integre (prevision + market-making + hedging) sur devises emergentes BRL / ZAR / TRY, combinant econometrie classique (VAR, GJR-GARCH, Markov-Switching, SABR, Nelson-Siegel) et apprentissage profond (LSTM, Transformer, PPO, Deep Hedging). | A defendre | Oui (PDF apres soutenance) |
+| **Memoire principal** | Construction d'un moteur de trading integre (prevision + market-making + hedging) sur devises emergentes BRL / ZAR / TRY, combinant econometrie classique (VAR, GJR-GARCH, Markov-Switching, SABR, Nelson-Siegel) et apprentissage profond (LSTM, Transformer, PPO, Deep Hedging). | With Honors | Restricted |
 | **Paper RMT-Zeta** | Etude exploratoire combinant Random Matrix Theory et statistique d'universalite de Montgomery-Odlyzko (zeros de la fonction zeta de Riemann) pour la prediction de volatilite multi-asset. | Working paper | Oui (complet) |
 
 **Problematique du memoire :** Comment construire un systeme de tenue de marche et de couverture cross-produit robuste aux regimes extremes (jumps, contagion, devaluations) sur les devises emergentes, en exploitant la complementarite entre rigueur econometrique et capacite d'apprentissage non-lineaire ?
