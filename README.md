@@ -61,12 +61,6 @@ Ce depot regroupe **deux travaux de recherche** menes dans le cadre du MSc DAAI 
 
 **Problematique du memoire :** Comment construire un systeme de tenue de marche et de couverture cross-produit robuste aux regimes extremes (jumps, contagion, devaluations) sur les devises emergentes, en exploitant la complementarite entre rigueur econometrique et capacite d'apprentissage non-lineaire ?
 
-### Note de l'auteur
-
-> Ce depot est la **version code-only** publique. Le PDF du memoire principal n'est pas encore publie car la soutenance n'a pas eu lieu (eviter tout conflit avec le systeme anti-plagiat Ouriginal). Il sera ajoute comme `Release v1.0` une fois la soutenance validee.
->
-> En attendant, **tout le code Python (figures, donnees, modeles)** est accessible, et le **paper RMT-Zeta** est integralement disponible (PDF + LaTeX + code).
-
 ---
 
 ## Galerie
