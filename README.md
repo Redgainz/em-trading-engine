@@ -29,6 +29,7 @@
 - [Resultats cles](#resultats-cles)
 - [Le memoire (code uniquement)](#le-memoire-code-uniquement)
 - [Le paper RMT-Zeta](#le-paper-rmt-zeta)
+- [B3 Options AMM (HFT market-making)](#b3-options-amm--market-making-hft-sur-options-actions-bresiliennes)
 - [Demo interactive](#demo-interactive)
 - [Structure du repo](#structure-du-repo)
 - [Reproductibilite](#reproductibilite)
@@ -47,17 +48,19 @@
 | **Memoire principal (PDF)** | [`thesis/Reda_Mikou_Memoire.pdf`](thesis/Reda_Mikou_Memoire.pdf) |
 | **Code memoire** | [`thesis/code/`](thesis/code/) |
 | **Code paper** | [`paper-rmt-zeta/code/`](paper-rmt-zeta/code/) |
+| **B3 Options AMM (HFT)** | [`b3-options-amm/`](b3-options-amm/) |
 
 ---
 
 ## Vue d'ensemble
 
-Ce depot regroupe **deux travaux de recherche** menes dans le cadre du MSc DAAI a EDHEC :
+Ce depot regroupe **trois travaux** menes dans le cadre du MSc DAAI a EDHEC :
 
 | Travail | Description | Statut | Code public |
 |---|---|---|---|
 | **Memoire principal** | Construction d'un moteur de trading integre (prevision + market-making + hedging) sur devises emergentes BRL / ZAR / TRY, combinant econometrie classique (VAR, GJR-GARCH, Markov-Switching, SABR, Nelson-Siegel) et apprentissage profond (LSTM, Transformer, PPO, Deep Hedging). | With Honors | Restricted |
 | **Paper RMT-Zeta** | Etude exploratoire combinant Random Matrix Theory et statistique d'universalite de Montgomery-Odlyzko (zeros de la fonction zeta de Riemann) pour la prediction de volatilite multi-asset. | Working paper | Oui (complet) |
+| **B3 Options AMM** | Strategie de market-making haute frequence sur options actions bresiliennes (PETR4, VALE3) : nappe SVI calibree sur la chaine B3 reelle, quoting Factor-GLFT multi-actifs, hedge delta, boucle KPI (markouts, attribution greeks, PnL retention) et parametrisation walk-forward. | Complet | Oui (complet) |
 
 **Problematique du memoire :** Comment construire un systeme de tenue de marche et de couverture cross-produit robuste aux regimes extremes (jumps, contagion, devaluations) sur les devises emergentes, en exploitant la complementarite entre rigueur econometrique et capacite d'apprentissage non-lineaire ?
 
@@ -91,6 +94,15 @@ Ce depot regroupe **deux travaux de recherche** menes dans le cadre du MSc DAAI 
 </tr>
 </table>
 
+### B3 Options AMM — figures cles
+
+<table>
+<tr>
+<td width="50%"><img src="b3-options-amm/figures/fig_03_iterations.png" alt="Iterations AMM"/><p align="center"><sub>PnL cumule du desk PETR4 + VALE3, v0 -> v5 (meme marche pour chaque version)</sub></p></td>
+<td width="50%"><img src="b3-options-amm/figures/fig_05_markouts.png" alt="Markouts"/><p align="center"><sub>Markouts brut vs delta-couvert : la toxicite du flux est directionnelle</sub></p></td>
+</tr>
+</table>
+
 ---
 
 ## Resultats cles
@@ -118,6 +130,19 @@ Ce depot regroupe **deux travaux de recherche** menes dans le cadre du MSc DAAI 
 | MonteCarlo-kNN | 0.1512 | -0.027 | -5.6% |
 
 **En regime CRISE seul, MLP-Adam atteint RMSE 0.238 (vs HAR 0.249, -4.4%)** — la valeur ajoutee des features RMT/Zeta se concentre exactement quand elle est la plus utile.
+
+### B3 Options AMM — iteration du modele (10 seances hors echantillon)
+
+| Version | Brique | PnL / jour (R$) | Retention | Sharpe ann. |
+|---|---|---:|---:|---:|
+| v0 | theo +/- spread ecran | 3 519 | 68 % | 16.4 |
+| v1 | GLFT + skew par option | 9 182 | 66 % | 45.8 |
+| v2 | skew factoriel vol ATM + spot | 10 108 | 68 % | 38.8 |
+| v4 | + fade sur flux options -> spot | 11 109 | 74 % | 35.6 |
+| **v5** | **calibre en walk-forward** | **21 877** | **77 %** | **45.8** |
+
+Spot, chaine d'options, Selic et calendrier B3 reels ; flux d'ordres simule (calibre sur les trades reels).
+Detail, limites et decomposition du gain dans [`b3-options-amm/README.md`](b3-options-amm/README.md).
 
 ---
 
@@ -155,6 +180,24 @@ Voir le [`README.md` dedie](paper-rmt-zeta/README.md) pour le detail.
 
 ---
 
+## B3 Options AMM — market-making HFT sur options actions bresiliennes
+
+Le dossier [`b3-options-amm/`](b3-options-amm/) contient une strategie AMM complete, des donnees au PnL :
+
+| Etape | Fichier | Contenu |
+|---|---|---|
+| Donnees reelles | [`amm/data.py`](b3-options-amm/amm/data.py) | Yahoo 1 min (spot), opcoes.net.br (chaine B3), BCB (Selic), cache CSV |
+| Nappe | [`amm/svi.py`](b3-options-amm/amm/svi.py), [`amm/surface.py`](b3-options-amm/amm/surface.py) | SVI quasi-explicite par echeance, sans arbitrage papillon, sticky-delta |
+| Simulateur | [`amm/market.py`](b3-options-amm/amm/market.py) | Marche a la seconde ancre sur le reel, flux bruit (GLM Poisson) et informe |
+| Modele | [`amm/glft.py`](b3-options-amm/amm/glft.py), [`amm/strategy.py`](b3-options-amm/amm/strategy.py) | GLFT multi-actifs (Riccati), skew facteurs vol + spot, fit ecran, fade |
+| Execution | [`amm/engine.py`](b3-options-amm/amm/engine.py), [`amm/hedger.py`](b3-options-amm/amm/hedger.py) | Matching prix-temps, hedge delta a bande, limites, kill-switch |
+| KPI | [`amm/kpi.py`](b3-options-amm/amm/kpi.py) | Markouts, attribution greeks, PnL retention, qualite de quoting |
+| Parametrisation | [`amm/calibration.py`](b3-options-amm/amm/calibration.py) | Recherche aleatoire + walk-forward train/test |
+
+Voir le [`README.md` dedie](b3-options-amm/README.md) pour le modele, les resultats et les limites.
+
+---
+
 ## Demo interactive
 
 Le repo inclut **deux interfaces interactives** pour explorer les resultats :
@@ -166,6 +209,8 @@ https://redgainz.github.io/em-trading-engine/
 ### 2. App Streamlit multi-pages
 
 https://em-trading-engine.streamlit.app/
+
+La page **B3 Options AMM** lance une seance de backtest en direct (sous-jacent, seance, version du modele et parametres au choix) et affiche PnL, edge, retention, markouts et attribution.
 
 ---
 
@@ -205,7 +250,16 @@ em-trading-engine/
 │
 ├── app/                            ← App Streamlit
 │   ├── README.md
-│   └── streamlit_app.py            ← 6 pages interactives
+│   ├── streamlit_app.py            ← 6 pages interactives
+│   └── pages/                      ← Trading Simulator + B3 Options AMM
+│
+├── b3-options-amm/                 ← Market-making HFT options B3 (complet)
+│   ├── README.md
+│   ├── amm/                        ← 16 modules numpy pur
+│   ├── scripts/                    ← pipeline 01 -> 05
+│   ├── tests/                      ← 27 tests pytest
+│   ├── data/                       ← cache reel B3 + resultats
+│   └── figures/                    ← 7 figures PNG
 │
 └── data/                           ← Donnees partagees
     ├── fx_real_2010_2026.csv       ← Close FX 8 series
@@ -228,6 +282,12 @@ em-trading-engine/
 - **Yield curves** : Nelson-Siegel dynamique (Diebold-Li)
 - **Deep Learning** : LSTM bi-directionnel, Transformer (multi-head attention), PPO Actor-Critic (Schulman)
 - **Risk management** : CVaR Rockafellar-Uryasev, Deep Hedging Buehler
+
+### Methodes (B3 Options AMM)
+- **Market-making** : GLFT multi-actifs (Gueant 2017), equation de Riccati, skew factoriel vol ATM + spot, fade sur flux
+- **Volatilite** : SVI raw (calibration quasi-explicite), controle d'arbitrage papillon, sticky-delta
+- **Microstructure** : markouts, adverse selection (Glosten-Milgrom), priorite prix-temps, GLM de Poisson des intensites
+- **Hedging** : bande fixe / Whalley-Wilmott, conventions B3 (base 252, Selic, ajuste des proventos)
 
 ---
 
