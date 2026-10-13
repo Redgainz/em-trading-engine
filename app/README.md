@@ -37,3 +37,10 @@ pour une UI fluide.
 
 Aucune base de donnees, aucun backend : tout est computation-on-demand a partir des
 CSV pre-calcules.
+
+## Page B3 Options AMM
+
+`pages/3_B3_Options_AMM.py` importe le module `b3-options-amm/amm/` et lance une seance de backtest
+en direct (~2 s) sur le cache de donnees reelles : choix du sous-jacent (PETR4, VALE3), de la seance,
+de la version du modele (v0 -> v5) et des parametres (gamma, kappa, fade, elargissement AS, clip, bande de hedge).
+

@@ -1,0 +1,98 @@
+{
+  "config": {
+    "strategy": {
+      "name": "cand_007",
+      "spread_model": "glft",
+      "skew_model": "factor",
+      "gamma": 0.007356044990538408,
+      "kappa": 2.2401554188219777,
+      "fixed_halfspread_mult": 1.0,
+      "factor_vol_daily": 0.012,
+      "idio_vol_daily": 0.002,
+      "delta_risk_weight": 0.2,
+      "clip_contracts": 20,
+      "min_edge_ticks": 0.0,
+      "queue_aware": true,
+      "as_widening": 0.0,
+      "as_horizon_s": 30,
+      "as_ewma_alpha": 0.05,
+      "as_prior_weight": 10.0,
+      "flow_fade": 0.004,
+      "flow_fade_halflife_s": 20.0,
+      "fit_factor_alpha": 0.3,
+      "fit_idio_alpha": 0.05,
+      "reprice_every_s": 5,
+      "risk_matrix_every_s": 60
+    },
+    "hedge": {
+      "band_mode": "fixed",
+      "band_shares": 3000.0,
+      "ww_risk_aversion": 0.0001,
+      "min_band_shares": 500.0,
+      "hedge_to": "edge"
+    },
+    "risk": {
+      "max_contracts_per_option": 200,
+      "max_vega_brl_per_volpt": 4000.0,
+      "max_daily_loss_brl": 40000.0
+    }
+  },
+  "meta": {
+    "selected": "cand_007",
+    "train_days": {
+      "PETR4": [
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24",
+        "2026-09-25"
+      ],
+      "VALE3": [
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
+        "2026-09-21",
+        "2026-09-22",
+        "2026-09-23",
+        "2026-09-24",
+        "2026-09-25"
+      ]
+    },
+    "test_days": {
+      "PETR4": [
+        "2026-09-28",
+        "2026-09-29",
+        "2026-09-30",
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-05",
+        "2026-10-06",
+        "2026-10-07",
+        "2026-10-08",
+        "2026-10-09"
+      ],
+      "VALE3": [
+        "2026-09-28",
+        "2026-09-29",
+        "2026-09-30",
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-05",
+        "2026-10-06",
+        "2026-10-07",
+        "2026-10-08",
+        "2026-10-09"
+      ]
+    },
+    "train_ce": 6997.095242338569,
+    "test_ce": 11281.113608772954,
+    "test_ce_base": 4820.137714262547
+  }
+}

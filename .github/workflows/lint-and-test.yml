@@ -43,3 +43,9 @@ jobs:
         python 01_build_data.py
         python rmt_zeta.py
         python ml_models.py
+
+    - name: B3 Options AMM - tests
+      run: |
+        pip install pytest
+        cd b3-options-amm
+        python -m pytest tests -q

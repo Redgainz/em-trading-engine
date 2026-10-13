@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.0] - 2026-10-13
+
+### Added
+- `b3-options-amm/` : strategie de market-making haute frequence sur options actions B3 (PETR4, VALE3)
+  - donnees reelles : Yahoo Finance 1 min, chaine B3 opcoes.net.br, Selic BCB, calendrier B3
+  - nappe SVI calibree, simulateur de marche a la seconde, quoting Factor-GLFT, hedge delta
+  - KPI (markouts, attribution greeks, PnL retention), iteration v0 -> v5, calibration walk-forward
+  - 27 tests pytest, 7 figures
+- Page Streamlit `B3 Options AMM`
+
 ## [1.0.0] - 2026-05-27
 
 ### Added
